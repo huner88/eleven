@@ -1,5 +1,6 @@
 import MySQLdb
-conn = MySQLdb.connect("128.199.137.57","shiyiqun","shiyiqun","test")
+#Ask me for the userName and password
+conn = MySQLdb.connect("*************")
 x = conn.cursor()
 
 try:

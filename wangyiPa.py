@@ -72,7 +72,7 @@ def Spider(url):
             k += 1
         
         for l in  newURL:
-            x.execute("""UPDATE wangYiDatas set url = %s WHERE id = %s)"""%(l,y))
+            x.execute("""UPDATE wangYiDatas set url = %s WHERE id = %s""",(l,y))
             y += 1
 
         conn.commit()

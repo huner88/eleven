@@ -1,5 +1,4 @@
 <?php
-
 define("TOKEN", "yiquns");
 $wechatObj = new wechatCallbackapiTest();
 if (isset($_GET['echostr'])) {
@@ -7,7 +6,6 @@ if (isset($_GET['echostr'])) {
 }else{
     $wechatObj->responseMsg();
 }
-
 class wechatCallbackapiTest
 {
     public function valid()
@@ -21,26 +19,22 @@ class wechatCallbackapiTest
             exit;
         }
     }
-
     private function checkSignature()
     {
         $signature = $_GET["signature"];
         $timestamp = $_GET["timestamp"];
         $nonce = $_GET["nonce"];
-
         $token = TOKEN;
         $tmpArr = array($token, $timestamp, $nonce);
         sort($tmpArr, SORT_STRING);
         $tmpStr = implode( $tmpArr );
         $tmpStr = sha1( $tmpStr );
-
         if( $tmpStr == $signature ){
             return true;
         }else{
             return false;
         }
     }
-
     public function responseMsg()
     {
         $postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
@@ -80,7 +74,8 @@ class wechatCallbackapiTest
             if($keyword != " " || $keyword == "hi" || $keyword != "")
             {
                 $msgType = "text";
-                $contentStr =$ffR;
+                //$contentStr =$ffR;
+                $contentStr = "姑娘姑娘你好你好，发送显示排名";
                 $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                 echo $resultStr;
             }
